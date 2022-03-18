@@ -36,12 +36,22 @@ session_start();
             </div> -->
             <span>use your email for registration</span>
             <input type="text" name="firstname" placeholder="First Name" class="form-control" required />
-            <input type="text" name="lastname" placeholder="last Name" class="form-control" required/>
+            <input type="text" name="lastname" placeholder="Last Name" class="form-control" required/>
             <input type="email" name="email" placeholder="Email" class="form-control" required/>
 
             <input type="password" name="password" placeholder="Password" class="form-control" required/>
 
             <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" required/>
+
+            <br/>
+            <label>Gender</label>
+            <label>
+                <select name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="Rather not say">Rather not say</option>
+                </select>
+            </label>
 
             <br/>
             <label>Birthday</label>

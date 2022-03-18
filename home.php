@@ -79,7 +79,7 @@ if(isset($_SESSION['email'])){
                    echo $row['firstname']." ".$row['lastname'];
 
                } ?></p>
-           <a href="#">See your profile</a>
+           <a href="profile.php">See your profile</a>
          </div>
        </div>
       <hr>

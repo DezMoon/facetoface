@@ -28,10 +28,10 @@ if (isset($_POST['email'])) {
     // Check user is exist in the database
     $query    = "SELECT * FROM users WHERE email='$email'
                      AND password='" . md5($password) . "'";
-    $result = mysqli_query($con, $query) or die(mysqli_error());
+    $result = mysqli_query($con, $query);
     $rows = mysqli_num_rows($result);
 
-    if (empty($email) && empty($password) ) {
+    if (empty($email) && empty($password)) {
 
         $_SESSION['err_message'] = 'Please provide email and password to continue';
         header("Location: ../../signin-signup.php");
@@ -40,7 +40,7 @@ if (isset($_POST['email'])) {
 
         if ($rows == 1) {
             $_SESSION['email'] = $email;
-            // Redirect to user dashboard page
+            // Redirect to user home page
             header("Location: ../../home.php");
         } else {
 

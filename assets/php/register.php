@@ -28,13 +28,15 @@ if (isset($_REQUEST['email'])) {
     $firstname = mysqli_real_escape_string($conn, $firstname);
     $lastname = stripslashes($_REQUEST['lastname']);
     $lastname = mysqli_real_escape_string($conn, $lastname);
+    $gender = stripslashes($_REQUEST['gender']);
+    $gender = mysqli_real_escape_string($conn, $gender);
     $birthday = stripslashes($_REQUEST['birthday']);
     $birthday = mysqli_real_escape_string($conn, $birthday);
     //$create_datetime = date("Y-m-d H:i:s");
 
 
-        $query = "INSERT into users (email, password, firstname, lastname, birthday)
-                     VALUES ('$email', '" . md5($password) . "', '$firstname', '$lastname', '$birthday')";
+        $query = "INSERT into users (email, password, firstname, lastname, gender, birthday)
+                     VALUES ('$email', '" . md5($password) . "', '$firstname', '$lastname', '$gender', '$birthday')";
         $result = mysqli_query($conn, $query);
         if ($result) {
             $_SESSION['message'] = 'You have successfully registered. Login to continue';
