@@ -34,6 +34,17 @@ if ($link === false) {
 <body>
 
 <?php
+if(isset($_SESSION['user_id'])) {
+
+    $query = "SELECT * FROM user_profile_pic WHERE user_id = '".$_SESSION['user_id']."'";
+
+    $result = mysqli_query($link, $query) or
+
+    die(mysqli_error($link));
+
+?>
+
+<?php
 if(isset($_SESSION['email'])){
 
     $query = "SELECT firstname, lastname FROM users WHERE email= '".$_SESSION['email']."'";
@@ -46,10 +57,10 @@ if(isset($_SESSION['email'])){
 
 <nav>
   <div class="nav-left">
-  <a href="home.php"> <img src="assets/images/logo.png" class="logo"> </a>
+  <a href="home.php"> <img src="assets/images/logo.png" class="logo" alt=""> </a>
   <ul>
-      <li><a href="#"><img src="assets/images/notification.png"></a></li>
-      <li><a href="#"><img src="assets/images/inbox.png"></a></li>
+      <li><a href="#"><img src="assets/images/notification.png" alt=""></a></li>
+      <li><a href="#"><img src="assets/images/inbox.png" alt=""></a></li>
       <li><a href="#"><img src="assets/images/video.png"></a></li>
         </ul>
       </div>
@@ -72,13 +83,34 @@ if(isset($_SESSION['email'])){
         </div>
       <div class="settings-menu-inner">
         <div class="user-profile">
-         <img src="assets/images/profile-pic.png">
+            <?php
+
+            $image = 'assets/images/user.png';
+
+
+            $sql=mysqli_query($link,"SELECT * FROM user_profile_pic where user_id = '".$_SESSION['user_id']."' ");
+				$roww  = mysqli_fetch_array($sql);
+                $file = isset($roww['image']);
+
+            if (file_exists('assets/f2f/upload/<?php echo $file ?>')){
+
+                $image = 'assets/f2f/upload/<?php echo $file ?>';
+
+
+         ?>
+            <img src="assets/f2f/upload/<?php echo $image?>"  alt=""/>
+
+            <?php
+            }
+            ?>
+
          <div>
            <p><?php while($row = mysqli_fetch_array($result)){
 
                    echo $row['firstname']." ".$row['lastname'];
 
                } ?></p>
+
            <a href="profile.php">See your profile</a>
          </div>
        </div>
@@ -410,5 +442,9 @@ if(isset($_SESSION['email'])){
 </div>
 
 <script src="assets/js/script.js"></script>
+
+<?php
+}
+?>
 </body>
 </html>

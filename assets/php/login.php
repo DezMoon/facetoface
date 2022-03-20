@@ -39,7 +39,12 @@ if (isset($_POST['email'])) {
     else {
 
         if ($rows == 1) {
+            $row=mysqli_fetch_assoc( $result );
+
+            $user_id = $row['user_id'];
+
             $_SESSION['email'] = $email;
+            $_SESSION['user_id'] = $user_id;
             // Redirect to user home page
             header("Location: ../../home.php");
         } else {

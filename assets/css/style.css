@@ -282,13 +282,14 @@ background-image: linear-gradient(transparent,rgba(0, 0, 0, 0.5)),url(../images/
 }
 .user-profile img{
     width: 45px;
+    height: 45px;
     border-radius: 50%;
     margin-right: 10px;
 }
 .user-profile p{
     margin-bottom: -1px;
     font-weight: 500;
-    color: 626262;
+    color: #626262;
 }
 .user-profile small{
     font-size: 12px;
