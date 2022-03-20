@@ -145,10 +145,43 @@ if(isset($_SESSION['email'])){
 <div class="container">
 <div class="left-sidebar">
     <p>left side bar</p>
+
+    <br/>
+
+    <form action="assets/user_profile/update_profile.php" method="post">
+        <label>Upload image</label>
+        <input type="file" name="file"/>
+        <p>Upload you pic here</p>
+
+        <input type="submit" name="upload_new_image" value="Upload" />
+        <h1>Click here to upload picture</h1>
+    </form>
+
 </div>
 
 <!---------main-content------------->
 <div class="main-containt">
+    <h1>Example</h1>
+    <p>Main content</p>
+
+    <div class="message">
+        <?php
+        if(isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+        }
+        ?>
+    </div>
+
+    <?php
+    if(isset($_SESSION['err_message'])) {
+        echo $_SESSION['err_message'];
+        unset($_SESSION['err_message']);
+    }
+    ?>
+
+    <br/>
+
     <?php
 
     $image = 'assets/images/user.png';
@@ -163,19 +196,15 @@ if(isset($_SESSION['email'])){
     $image = 'assets/f2f/upload/<?php echo $file ?>';
 
     ?>
+        <form action="assets/user_profile/update_profile.php" method="post">
+            <label>Upload image</label>
+            <input type="file" name="image" value="<?php echo $image; ?>"/>
+            <p>Upload you pic here</p>
+            <p><img src="assets/f2f/upload/<?php echo $image; ?>" width="100" height="100" alt="profile picture" /></p>
 
-    <form action="assets/user_profile/update_profile.php" method="post">
-        <div class="form-group">
-            <label>File</label>
-            <input type="file" name="image" value="<?php echo $image; ?>">
-            <p><img src="assets/f2f/upload/<?php echo $image; ?>" width="100" height="100"></p>
-        </div>
+            <input type="submit" name="upload_image" value="Upload" />
 
-        <div class="form-group">
-            <input  type="submit" class="dtn btn-primary" name="image_upload" value="Upload" />
-        </div>
-    </form>
-
+        </form>
 
     <?php
     }
@@ -184,6 +213,15 @@ if(isset($_SESSION['email'])){
 
 <div class="right-sidebar">
     <p>right side bar</p>
+    <form action="assets/user_profile/update_profile.php" method="post">
+        <label>Upload image</label>
+        <input type="file" name="image" value="<?php echo $image; ?>"/>
+        <p>Upload you pic here</p>
+        <p><img src="assets/f2f/upload/<?php echo $image; ?>" width="100" height="100" alt="profile picture" /></p>
+
+        <input type="submit" name="upload_image" value="Upload" />
+        <h1>Click here to upload picture</h1>
+    </form>
 </div>
 </div>
 
